@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+  .navbar{opacity:0}
+  .navbar:hover{opacity:1}
+  #section1{background:red;}
+  #section2{background:green;}
+  #section3{background:blue;}
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Library Management System</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li><a href="#section1" class="active">Book Search</a></li>
+      <li><a href="#section2">Page 2</a></li>
+      <li><a href="#section3">Page 3</a></li>
+    </ul>
+    </div>
+  </div>
+</nav>
+<div id="container">
+<div class="row">  
+<div class="col-md-6 col-md-offset-3" id="section1">
+
+<h3>ISBN:</h3>   <input type="text"id="input1"onkeyup="change()"></input><br>
+<h3>TITLE:</h3>  <input type="text"id="input2"onkeyup="change()"></input><br>
+<h3>AUTHOR:</h3> <input type="text"id="input3"onkeyup="change()"></input><br>
+<h3>searching:</h3><p id="change"></p>
+<button type="button" onclick="hello()">search</button>
+<button type="button" onclick="clean()">clear</button>
+<p id="hello"></p>
+<script type="text/javascript">
+function change(){
+	var isbn = document.getElementById("input1").value;
+	var title = document.getElementById("input2").value;
+	var author = document.getElementById("input3").value;
+	document.getElementById("change").innerHTML = isbn+"&&"+title+"&&"+author;	
+}
+function clean(){
+	
+	document.getElementById("hello").innerHTML="";
+	document.getElementById("input1").value="";
+	document.getElementById("input2").value="";
+	document.getElementById("input3").value="";
+	document.getElementById("change").innerHTML="";
+}
+
+function hello(){
+	 var xmlhttp = new XMLHttpRequest();
+	 var isbn = document.getElementById("input1").value;
+	 var title = document.getElementById("input2").value;
+	 var author = document.getElementById("input3").value;
+     xmlhttp.onreadystatechange = function() {		
+         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+             document.getElementById("hello").innerHTML = xmlhttp.responseText;
+         }
+     };
+     var sql = "select * from books where ISBN10 like '%"+isbn+"%' and Title like '%"+title+"%'and Author like '%"+author+"%'"
+     document.getElementById("change").innerHTML=sql;
+     sql = "select * from books where ISBN10 like'"+"%25"+"0195153448"+"%25"+"'";
+     //sql = "%25";
+     xmlhttp.open("GET", "DBconnect?sql="+sql, true);
+     xmlhttp.send();
+	
+	
+	
+}
+
+
+</script>
+
+
+
+</div>
+</div>
+<div class="row">  
+<div class="col-md-6 col-md-offset-3" id="section2">
+  <h3>Basic Navbar Example</h3>
+  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+</div>
+</div>
+<div class="row">  
+<div class="col-md-6 col-md-offset-3" id="section3">
+  <h3>Basic Navbar Example</h3>
+  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+</div>
+</div>
+</div>
+<script>
+$(".col-md-6").css("min-height",$(window).height()).css("padding",$(".navbar").height());
+</script>
+</body>
+</html>

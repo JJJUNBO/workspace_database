@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+.navbar {
+	opacity: 0
+}
+
+.navbar:hover {
+	opacity: 1
+}
+
+#section1 {
+	background: #009900;
+	border: 1px solid black;
+}
+
+#section2 {
+	background:#009933;
+	border: 1px solid black;
+}
+
+#section3 {
+	background: #009966;
+}
+#section4 {
+	background: blue;
+}
+
+button {
+	float: right;
+	margin: 5px;
+}
+
+#display {
+	
+}
+
+table {
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid black;
+	text-align:center;
+}
+
+th {
+	border: 1px solid black;
+}
+#checkin_dis{
+position:relative;
+z-index:-1;
+}
+h5{float:right}
+#showpaid{
+position:relative;
+z-index:-1;}
+#refresh{float:left}
+</style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Library Management System</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="#section1">Book Search</a></li>
+					<li><a href="#section2">Book Loan</a></li>
+					<li><a href="#section3">Borrower Create</a></li>
+					<li><a href="#section4">Borrower Create</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3" id="section1">
+				<div class="row">
+					<div class="col-md-4">
+						<h3>ISBN:</h3>
+						<input type="text" id="input1" onkeyup="change()"></input>
+					</div>
+					<div class="col-md-4">
+						<h3>TITLE:</h3>
+						<input type="text" id="input2" onkeyup="change()"></input>
+					</div>
+					<div class="col-md-4">
+						<h3>AUTHOR:</h3>
+						<input type="text" id="input3" onkeyup="change()"></input>
+					</div>
+				</div>
+				<h3>Searching:</h3>
+				<p id="change"></p>
+				<button type="button" onclick="search()">search</button>
+				<button type="button" onclick="cleansearch()">clear</button>
+				<div id="display"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3" id="section2">
+				<div class="row">
+					<div class="col-md-4">
+						<h3>ISBN:</h3>
+						<input type="text" id="input4"onkeyup="change2()"></input>
+					</div>
+					<div class="col-md-4">
+						<h3>BRANCH_ID:</h3>
+						<input type="text" id="input5"onkeyup="change2()"></input>
+					</div>
+					<div class="col-md-4">
+						<h3>CARD_NO:</h3>
+						<input type="text" id="input6"onkeyup="change2()"></input>
+					</div>
+				</div>
+				    <h5>(All fields are necessary)</h5>
+					<h3>Checking Out:</h3>
+					<p id="checkout"></p>
+					<button type="button" onclick="checkout()">Check Out</button>
+					<button type="button" onclick="clearcheckout()">clear</button>
+					<br><br/>
+				<div class="row">
+					<div class="col-md-4">
+						<h3>BOOK_ID:</h3>
+						<input type="text" id="input7"onkeyup="change3()"></input>
+					</div>
+					<div class="col-md-4">
+						<h3>CARD_NO:</h3>
+						<input type="text" id="input8"onkeyup="change3()"></input>
+					</div>
+					<div class="col-md-4">
+						<h3>NAME(F/L):</h3>
+						<input type="text" id="input9"onkeyup="change3()"></input>
+					</div>
+				</div>
+				    <h5>(Fill at least one field)</h5>
+					<h3>Locating:</h3>
+					<p id="checkin"></p>
+					<button type="button" onclick="locate()">Locate</button>
+					<button type="button" onclick="clearlocate()">clear</button>
+					<div id="checkin_dis">
+					<h3>Loan_Id</h3>
+					<input type="text" id="input10"></input>
+					<button type="button" onclick="checkin()">Check in</button>
+					<p id="checkin2"></p>
+					</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3" id="section3">
+			<div class="row">
+			<div class="col-md-3"><h3>SSN:</h3><input type="text" id="input11"></input></div>
+			<div class="col-md-3"><h3>Fname:</h3><input type="text" id="input12"></input></div>
+			<div class="col-md-3"><h3>Lname:</h3><input type="text" id="input13"></input></div>
+			<div class="col-md-3"><h3>Email:</h3><input type="text" id="input14"></input></div>
+			</div>
+			<div class="row">
+			<div class="col-md-3"><h3>Address:</h3><input type="text" id="input15"></input></div>
+			<div class="col-md-3"><h3>City:</h3><input type="text" id="input16"></input></div>
+			<div class="col-md-3"><h3>State:</h3><input type="text" id="input17"></input></div>
+			<div class="col-md-3"><h3>Phone:</h3><input type="text" id="input18"></input></div>
+			</div>
+			<br>
+			<button type="button" onclick="Createbow()">Create Borrower</button>
+		    <button type="button" onclick="clearbow()">Clear</button>
+		    <br>
+		    <p id="displaybow"></p>
+			</div>
+		</div>
+			<div class="row">
+			<div class="col-md-6 col-md-offset-3" id="section4">
+			<div class="row">
+			<div class="col-md-3"><h3>Card_No:</h3><input type="text" id="input19"></input></div>
+			</div>
+
+			<br>
+			<div id="showpaid">
+			<button type="button" onclick="confirmpaid()">Paid Confirm</button>
+			<button type="button" onclick="checkpaid()">Check Fine Amount</button>
+			<button type="button" onclick="clearpaid()">Clear</button>
+			</div>
+			<button type="button" id="refresh" onclick="refresh()">Refresh Fine Table</button>
+		    
+		    <br><br/>
+		    <br><br/>
+		    <br><br/>
+		    <h3 id="Fineamt"></h3>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(".col-md-6").css("min-height", $(window).height()).css("padding",$(".navbar").height());
+	</script>
+</body>
+<script type="text/javascript"src=function.js></script>
+</html>

@@ -1,0 +1,15 @@
+127.0.0.1 - - [22/Mar/2016:19:12:06 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:12:28 +0800] "GET /library_manager/gui.html HTTP/1.1" 200 6249
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:12:28 +0800] "GET /library_manager/function.js HTTP/1.1" 200 7186
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:12:33 +0800] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:12:36 +0800] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:13:31 +0800] "GET /library_manager/DBconnect?sql=select%20*%20from%20books,book_copies,library_branch%20where%20ISBN10%20like'%2511111%25'and%20Title%20like'%25%25'and%20Author%20like'%25%25'and%20ISBN10=book_id%20and%20book_copies.branch_id=library_branch.branch_id HTTP/1.1" 200 700
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:14:09 +0800] "GET /library_manager/DBconnect6 HTTP/1.1" 200 19
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:14:15 +0800] "GET /library_manager/DBconnec7?cardno=11111 HTTP/1.1" 200 43
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:18:26 +0800] "GET /library_manager/gui.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:18:26 +0800] "GET /library_manager/gui.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:18:26 +0800] "GET /library_manager/gui.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:18:26 +0800] "GET /library_manager/function.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:18:50 +0800] "GET /library_manager/DBconnect?sql=select%20*%20from%20books,book_copies,library_branch%20where%20ISBN10%20like'%2511112%25'and%20Title%20like'%25%25'and%20Author%20like'%25%25'and%20ISBN10=book_id%20and%20book_copies.branch_id=library_branch.branch_id HTTP/1.1" 200 158
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:19:35:02 +0800] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [22/Mar/2016:21:17:27 +0800] "GET /library_manager/DBconnec7 HTTP/1.1" 200 43
